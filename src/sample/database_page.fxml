@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerDB">
+   <top>
+      <HBox alignment="TOP_CENTER" prefHeight="48.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Pracownik: " />
+            <Label fx:id="name_lbl" text="Label" />
+            <Label text="Stanowisko:" />
+            <Label fx:id="job_title_lbl" text="Label" />
+            <Button fx:id="profile_button" mnemonicParsing="false" onAction="#view_profile" text="profile " />
+            <Button fx:id="change_username" mnemonicParsing="false" onAction="#onChangeUsername" text="change username" />
+            <Button fx:id="change_password" mnemonicParsing="false" onAction="#onChangePassword" text="change password" textOverrun="CLIP" />
+            <Button fx:id="log_out_click" mnemonicParsing="false" onAction="#onLogOut" text="Log out" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <left>
+       <Accordion BorderPane.alignment="CENTER">
+           <panes>
+               <TitledPane animated="false" text="Choose Table">
+                   <content>
+                       <VBox alignment="TOP_CENTER" prefHeight="352.0" prefWidth="140.0" spacing="20.0" BorderPane.alignment="CENTER">
+                           <children>
+                               <Label text="Choose table to open" />
+                               <ChoiceBox fx:id="open_table_box" prefWidth="150.0" />
+                               <Button fx:id="open_button" mnemonicParsing="false" onAction="#onOpenTable" text="Open" />
+                           </children>
+                       </VBox>                   </content>
+               </TitledPane>
+               <TitledPane animated="false" text="Filter Table">
+                   <content>
+                       <VBox alignment="TOP_CENTER" prefHeight="352.0" prefWidth="140.0" spacing="20.0" BorderPane.alignment="CENTER">
+                           <children>
+                               <Label text="Filter by" />
+                               <ChoiceBox fx:id="column_box" onMouseEntered="#onDragChoiceBox" prefWidth="150.0" />
+                               <Label fx:id="textValue" text="with value" />
+                               <TextField fx:id="filter_value" />
+                               <Button mnemonicParsing="false" onAction="#onFilterby" text="Start" />
+                           </children>
+                       </VBox>
+                   </content>
+               </TitledPane>
+           </panes>
+       </Accordion>
+
+   </left>
+   <center>
+       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+          <content>
+         <TableView fx:id="myTable" BorderPane.alignment="CENTER">
+           <columns>
+             <TableColumn fx:id="tableColumn_ID_PRACOWNIK" prefWidth="115.0" text="ID_PRACOWNIK" />
+              <TableColumn fx:id="tableColumn_IMIE" prefWidth="115.0" text="IMIE" />
+              <TableColumn fx:id="tableColumn_NAZWISKO" prefWidth="115.0" text="NAZWISKO" />
+              <TableColumn fx:id="tableColumn_STANOWISKO" prefWidth="115.0" text="STANOWISKO" />
+              <TableColumn fx:id="tableColumn_MIASTO" prefWidth="115.0" text="MIASTO" />
+              <TableColumn fx:id="tableColumn_ULICA" prefWidth="115.0" text="ULICA" />
+              <TableColumn fx:id="tableColumn_KONTAKT" prefWidth="115.0" text="NUMER" />
+              <TableColumn fx:id="tableColumn_KONTO_BANKOWE" prefWidth="115.0" text="KONTO BANKOWE" />
+              <TableColumn fx:id="tableColumn_KOD_POCZTOWY" prefWidth="115.0" text="KOD POCZTOWY" />
+
+               <TableColumn fx:id="tableColumn_ID_POJAZD" prefWidth="115.0" text="ID_POJAZD" />
+               <TableColumn fx:id="tableColumn_ROK_PRODUKCJI" prefWidth="115.0" text="ROK_PRODUKCJI" />
+               <TableColumn fx:id="tableColumn_PRODUCENT" prefWidth="115.0" text="PRODUCENT" />
+               <TableColumn fx:id="tableColumn_NUMER_BOCZNY" prefWidth="115.0" text="NUMER_BOCZNY" />
+               <TableColumn fx:id="tableColumn_TYP" prefWidth="115.0" text="TYP" />
+               <TableColumn fx:id="tableColumn_DATA_PRZEGLADU" prefWidth="115.0" text="DATA_PRZEGLADU" />
+               <TableColumn fx:id="tableColumn_POJEMNOSC" prefWidth="115.0" text="POJEMNOSC" />
+               <TableColumn fx:id="tableColumn_MODEL" prefWidth="115.0" text="MODELI" />
+
+               <TableColumn fx:id="tableColumn_ID_STACJA" prefWidth="115.0" text="ID_STACJA" />
+               <TableColumn fx:id="tableColumn_NAZWA" prefWidth="115.0" text="NAZWA" />
+               <TableColumn fx:id="tableColumn_GPS_X" prefWidth="115.0" text="GPS_X" />
+               <TableColumn fx:id="tableColumn_GPS_Y" prefWidth="115.0" text="GPS_Y" />
+               <TableColumn fx:id="tableColumn_TYP_STACJI" prefWidth="115.0" text="TYP_STACJI" />
+               <TableColumn fx:id="tableColumn_MODEL_STACJI" prefWidth="115.0" text="MODEL_STACJI" />
+               <TableColumn fx:id="tableColumn_BILETOMAT" prefWidth="115.0" text="BILETOMAT" />
+               <TableColumn fx:id="tableColumn_STREFA" prefWidth="115.0" text="STREFA" />
+           </columns>
+         </TableView>
+          </content>
+       </ScrollPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="add_button" mnemonicParsing="false" onAction="#onAdd" text="add" />
+            <Button fx:id="edit_button" mnemonicParsing="false" onAction="#onEdit" text="edit" />
+            <Button fx:id="delete_button" mnemonicParsing="false" onAction="#onDelete" text="delete" />
+         </children>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>
